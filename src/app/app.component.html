@@ -1,0 +1,52 @@
+<div class="example-container">
+  <mat-toolbar color="accent" class="example-toolbar" > 
+      
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon *ngIf="!drawer.opened">menu</mat-icon>
+      <mat-icon *ngIf="drawer.opened">close</mat-icon>
+    </button>   
+      <h1 class="example-app-name">REGISTRO DE AUTOS COLOMBIA</h1>
+
+
+
+      <span class="example-spacer"></span>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/vehiculo']">
+                <mat-icon>account_box</mat-icon>
+                <span>Mi Perfil</span>
+            </button>
+            <button mat-menu-item >
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Cerrar Sesión</span>
+            </button>
+        </mat-menu>
+  
+      
+  </mat-toolbar>
+  
+  <mat-drawer-container class="example-sidenav-content" autosize>
+    <mat-progress-bar *ngIf="progressbar" mode="buffer"></mat-progress-bar>
+    <mat-drawer #drawer style="width: 200px" mode="side">
+
+        <img src="assets/colombia-si.png" width="128" style="margin-left: 20px;" />
+
+      <mat-divider></mat-divider> 
+        <button mat-menu-item (click)="drawer.toggle()" (click)="loadData()" style="cursor: pointer" [routerLink]="['/vehiculo']">
+          <mat-icon>directions_cars</mat-icon>
+          <span>Vehiculos</span>
+        </button>
+        <mat-divider></mat-divider>  
+    </mat-drawer>
+
+      <div class="example-sidenav-content">
+          <router-outlet></router-outlet>
+      </div>
+
+    </mat-drawer-container>
+
+</div>
